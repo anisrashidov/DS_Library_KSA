@@ -1,0 +1,46 @@
+{% extends 'Library/base.html' %}
+{% load static %}
+
+{% block link_css %}
+<link rel="stylesheet" type="text/css" href="{% static 'Library/notice.css' %}">
+{% endblock link_css %}
+
+{% block content %}
+
+{% if notice %}
+
+<div class="container shadow-lg p-3 mb-5 rounded">
+	<div class="image-and-text">
+		<img class="notice_image" src="{{notice.image.url}}">
+		<h1 class="notice_title">{{notice.title}}</h1>
+		<span>{{notice.description}}</span>
+	</div>
+</div>
+
+<div class="container p-2 rounded" style="background-color: rgba(133, 133, 133, .4);">
+		<h3>Comments:</h3>
+			{% if request.user.is_authenticated %}
+				<form class="comment-form" method="POST">
+					{%csrf_token%}
+					<textarea class="form-control" name="comment-textarea"></textarea>
+					<button class="mb-0 mt-2 btn btn-success">Upload</button>
+				</form>
+			{% endif %}
+		<hr>
+		{% if not notice.comments.all %}
+			No comments yet...
+		{% else %}
+			<ul>
+			{% for comment in notice.comments.all %}
+				<li>
+					<strong>{{comment.student_ID}} :</strong>
+					<p class='comment-textfield'>{{comment.body}}</p>
+				</li>
+			{% endfor %}
+			</ul>
+		{% endif %}
+	</div>
+
+{% endif %}
+
+{% endblock content %}

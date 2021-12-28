@@ -1,0 +1,88 @@
+.content{
+	margin: 180px auto;
+	padding: 5rem 1.5rem;
+	width: 90%;
+	background-color: rgb(135, 206, 235);
+	border-radius: 5px;
+	box-shadow: 0px 0px 10px 4px rgb(135, 206, 235, .8);
+}
+
+.content > h4{
+	margin-bottom: 20px;
+}
+
+.code-field{
+	position: absolute;
+	float: left;
+	border: 0;
+	border-radius: 100px;
+	padding: 10px;
+	outline: none;
+}
+
+.submit-btn{
+	position: relative;
+	float: right;
+	left: 2px;
+	padding: 8px;
+	background-color: rgba(222, 242, 36, 0.9);
+	font-size: 110%;
+	border: 0;
+	border-radius: 2px;
+}
+
+@media (min-width: 400px){
+	.content{
+		margin: 200px auto 0;
+	}
+
+	.code-field{
+		width: 64%;
+	}
+
+	.submit-btn{
+		width: 20%;
+		left: 10px;
+		padding: 8px 5px;
+	}
+}
+
+
+@media (min-width: 576px){
+	.content{
+		margin: 220px auto 0;
+	}
+
+	.code-field{
+		width: 68%;
+	}
+
+	.submit-btn{
+		width: 15%;
+	}
+}
+
+
+@media (min-width: 897px){
+	.submit-btn{
+		width: 18%;
+		left: 0;
+	}
+}
+
+@media (min-width: 1100px){
+	.content{
+		width: 70%;
+	}
+	.code-field{
+		width: 55%;
+	}
+	.submit-btn{
+		width: 15%;
+		padding: 8px;
+		background-color: rgba(222, 242, 36, 0.9);
+		font-size: 110%;
+		border: 0;
+		border-radius: 2px;
+	}
+}

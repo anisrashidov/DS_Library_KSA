@@ -1,0 +1,181 @@
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+1:wght@300&family=Montagu+Slab:wght@300&family=Open+Sans:ital,wght@0,300;0,500;1,300&display=swap');
+$carousel-control-transition: opacity .3s ease;
+$carousel-indicator-transition: opacity .1s ease;
+
+*{
+	padding: 0;
+	margin: 0;
+}
+
+body{
+	display: flex;
+	flex-direction: column;
+}
+
+.navbar{
+	background-color: rgba(148, 148, 148, 1);
+}
+
+.nav-logo{
+	width: 50px;
+	margin: 0 0 0 5px;
+}
+
+.nav-search{
+	box-sizing: border-box;
+	width: 300px;
+	height: 2.7rem;
+	outline: none;
+  	transition: width .3s;
+  	padding-left: 10px;
+  	border-style: solid;
+  	border-color: #ffffff;
+  	border-radius: 5px;
+}
+
+.notices{
+	background-color: #d1ded4;
+	font-family: 'Montagu Slab', serif;
+	min-height: 20rem;
+}
+
+.suggestions{
+	background-color: #87c3f5;
+	font-family: 'M PLUS 1', sans-serif;
+	min-height: 20rem;
+}
+
+.carousel-item{
+	min-height: 20rem;
+}
+
+.card{
+	width: 60%;
+	font-size: 95%;
+}
+
+a{
+	text-decoration: none;
+	color: white;
+}
+
+.row > .col-md-3{
+	text-align: center;
+}
+
+p.card-text{
+	max-height: 10rem;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: none;
+}
+
+.img-notices{
+	width: 85%;
+}
+
+.img-recommendation{
+	width: 70%;
+}
+
+.carousel-indicators{
+	display: none;
+}
+
+.carousel-inner{
+	height: 28rem;
+}
+
+.extend-btn{
+	background: transparent;
+	border: 0;
+	color:  white;
+}
+
+@media (min-width: 468px){
+	.carousel-inner{
+		height: 39rem
+	}
+	.notices{
+		height: 40rem;
+	}
+	.suggestions{
+		height: 45rem;
+	}
+}
+
+@media (min-width: 600px){
+	.carousel-inner{
+		height: 42rem
+	}
+	.notices{
+		height: 50rem;
+	}
+	.suggestions{
+		height: 50rem;
+	}
+}
+
+@media (min-width: 770px){
+	.carousel-inner{
+		height: 21.5rem
+	}
+	.notices{
+		height: 30rem;
+	}
+	.suggestions{
+		height: 30rem;
+	}
+	p.card-text{
+		max-height: 5rem;
+		text-overflow: ellipsis;
+		overflow: hidden;
+		display: block;
+	}
+
+	.img-notices{
+		width: 100%;
+	}
+
+	.img-recommendation{
+		width: 100%;
+	}
+}
+
+@media (min-width: 1000px){
+	.carousel-inner{
+		height: 22rem
+	}
+	.notices{
+		height: 33rem;
+	}
+	.suggestions{
+		height: 33rem;
+	}
+	p.card-text{
+		max-height: 7rem;
+		text-overflow: ellipsis;
+		overflow: hidden;
+		display: block;
+	}
+}
+
+@media (min-width: 1200px){
+	.carousel-inner{
+		min-height: 25rem;
+		padding: 5px;
+		box-sizing: border-box;
+	}
+	.notices{
+		min-height: 25rem;
+	}
+	.suggestions{
+		min-height: 25rem;
+	}
+	p.card-text{
+		max-height: 7rem;
+		text-overflow: ellipsis;
+		overflow: hidden;
+		display: block;
+	}
+}

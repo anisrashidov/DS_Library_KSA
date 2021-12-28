@@ -1,0 +1,94 @@
+
+.search-box {
+	width: 70%;
+	height: 50px;
+	margin: 10px auto;
+	border: 0;
+	box-sizing: border-box;
+	padding: 1px;
+}
+.search-field {
+	width: 85%;
+	height: 45px;
+	padding: 10px 5px;
+	font-size: 17px;
+	color: #4a4a4a;
+	border: 1px solid black;
+	background: #edfff8;
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+}
+.search-field:focus {
+	outline: 0;
+	background: #fff;
+	color:#444;
+}
+  
+.search-btn {
+	position: relative;
+	float: right;
+	border: 1px solid black;
+	padding: 0;
+	width: 15%;
+	height: 45px;
+	color: #4a4a4a;
+	font-size: 17px;
+	background: #edfff8;
+	border-left: 1px solid #000000;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+
+.search-btn:hover {
+	background: #fff;
+	color:#444;
+}
+.search-btn:active {
+	box-shadow: 0px 0px 12px 0px rgba(225, 225, 225, 1);
+}
+
+.search-btn:focus {
+	outline: 0;
+}
+
+div.filters{
+	display: flex;
+	flex-direction: column;
+}
+
+.card-authors{
+	font-size: 110%;
+	font-weight: 10px;
+}
+
+.card-body > .btn{
+	font-size: 90%;
+/*	margin-top: max(50px, 10%)*/
+}
+
+.books{
+	margin-top: 50px;
+}
+
+.img-fluid{
+	width: 90%;
+	margin: auto auto;
+}
+
+.card{
+	width: 98%;
+}
+
+.filters{
+	padding-left: 15%;
+	width: 50%;
+}
+
+.genre > select{
+	border: 1 solid black;
+	box-sizing: border-box;
+	padding: 3px;
+	width: auto;
+	text-align: center;
+	border-radius: 10px;
+}

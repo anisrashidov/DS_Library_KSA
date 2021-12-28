@@ -1,0 +1,76 @@
+{% extends 'Library/base.html' %}
+{% load crispy_forms_tags %}
+{%load static%}
+
+{% block link_css %}
+<link rel="stylesheet" type="text/css" href="{% static 'Library/archive.css' %}">
+{% endblock link_css %}
+
+{% block content %}
+
+<div class="container">
+	<header class="pt-3">
+		<h1>Welcome to KSA Library Archive</h1>
+	</header>
+
+
+	{% if search %}
+	<center class="mt-4 mb-4"><h3>You searched for "{{search}}"</h3></center>
+	{%endif%}
+
+
+	<section class="search-container mt-5">
+		<form method='GET' class='search-form'>
+			<div class="search-box">
+				<input class='search-field' type="text" placeholder="Search here..." name='search-main'>
+  				<button class="search-btn" type="submit">Search</button>
+			</div>
+
+			<div class='filters'>
+				<div class='criteria'>
+					<h6 style="display: inline;">{{ filters.Criteria.label }}:</h6>
+					{% for radio in filters.Criteria %}
+					    <label for="{{ radio.id_for_label }}" style="margin-left: 10px;">
+					        <span class="radio">{{ radio.tag }}</span>
+					        {{ radio.choice_label }}
+					    </label>
+					{% endfor %}
+				</div>
+				<div class="genre">
+					<h6 style="display: inline;">{{ filters.Genre.label }}:</h6>
+					{{ filters.Genre }}
+				</div>
+			</div>
+
+		</form>
+	</section>
+
+	<section class="books mb-5">
+		{% for book in books %}
+			<div class="container container-books card mt-5 shadow p-3 bg-body rounded">
+				<div class="row g-0">
+					<div class="col-md-3">
+						<img src="{{ book.image.url }}" class="img-fluid rounded" alt="...">
+					</div>
+					<div class="col-md-9">
+						<div class="card-body ">
+							<h4 class="card-title card-flex-item">{{book.title}}</h4>
+							<div class="card-text card-authors card-flex-item">Written by: {{ book.authors }}</div>
+							<p class="card-text mb-3 mt-5 card-flex-item">{{book.description}}</p>
+							<div class="btn btn-primary card-flex-item">
+								<a class="btn btn-primary" href="{% url 'library-book' book_id=book.id %}"> Learn More... </a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		{% endfor %}
+	</section>
+
+	<!-- <section clas> -->
+		
+	</section>
+
+</div>
+
+{% endblock content %}

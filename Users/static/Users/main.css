@@ -1,0 +1,16 @@
+.navbar{
+	background-color: rgba(148, 148, 148, 1);
+}
+
+.navbar li a{
+	font-size: 100%;
+}
+
+.nav-logo{
+	width: 50px;
+	margin: 0 0 0 5px;
+}
+
+.content-section{
+	max-width: 50%;
+}

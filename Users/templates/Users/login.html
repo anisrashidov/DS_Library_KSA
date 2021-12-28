@@ -1,0 +1,60 @@
+{% extends "Users/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+    
+    {% if messages %}
+
+        {%for message in messages%}
+
+            <div id="message" class="alert alert-{{ message.tags }} text-center">
+                <h5 style="display: inline-block">{{message}}</h5>
+                <button class="btn float-end" onclick="hide()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M13.854 2.146a.5.5 0 0 1 0 .708l-11 11a.5.5 0 0 1-.708-.708l11-11a.5.5 0 0 1 .708 0Z"/>
+                        <path fill-rule="evenodd" d="M2.146 2.146a.5.5 0 0 0 0 .708l11 11a.5.5 0 0 0 .708-.708l-11-11a.5.5 0 0 0-.708 0Z"/>
+                    </svg>
+                </button>
+            </div>
+
+            <script type="text/javascript">
+                function hide() {
+                    var x = document.getElementById("message");
+                    if (x.style.display != "none") {
+                        x.style.display = "none";
+                    }
+                }
+            </script>
+
+        {%endfor%}
+
+    {% endif %}
+
+    <div class="content-section p-5 container-sm">
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-3 pb-1">Log in</legend>
+                {{ form|crispy }}
+            </fieldset>
+            <small class="text-muted">
+                <a class="ml-2" href="{% url 'password_reset' %}">Forgot Password</a>
+            </small>
+            <div class="form-group mt-3">
+                <button class="btn btn-outline-info" type="submit">Sign in</button>
+            </div>
+        </form>
+        <div class="border-top mt-4 pt-3">
+            <small class="text-muted">
+                Need an account? <a class="ml-2" href="{%url 'register'%}">Sign Up</a>
+            </small>
+        </div>
+    </div>
+
+    <style type="text/css">
+        fieldset div{
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+    </style>
+
+{% endblock content %}

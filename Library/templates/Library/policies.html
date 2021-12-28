@@ -1,0 +1,50 @@
+{% extends 'Library/base.html' %}
+{% block content %}
+
+<section class='mt-5'>
+
+	<h2>Terms of Loan</h2>
+	<ol>
+		<li> Each student can borrow up to 5 books for 7 days, which then can be extended up to 14 days, but only once. </li>
+		<li> For teachers, up to 20 books per person, 30 days, and up to 60 days can be extended once. </li>
+		<li> For school employees, up to 10 books per person, 15 days, and up to 30 days can be extended once </li>
+	</ol>
+
+	<h2 class="mt-3">Management of arrears</h2>
+	<ol>
+		<li> Those who fail to return the bought book due to overdue payment are requested to return it, and the delinquent is notified. </li>
+		<li> In the case of students, if the loaned book is overdue, the loan is suspended by the number of overdue days. A penalty of 1 point per 7 days can be imposed. </li>
+		<li> In the case of faculty members, loans of other materials are prohibited if the loaned book is overdue. </li>
+		<li> Book, 30 days after the end of the loan period, shall be regarded as lost book and compensation for it shall be requested. </li>
+	</ol>
+
+	<h2 class="mt-3">Organization of books</h2>
+	<ol>
+		<li> Book imported after inspection are classified according to the Korean Decimal Classification Act and added to database </li>
+		<li> In the case of general liberal arts magazines, they shall be discarded after more than three years in consideration of changes in the collection space and curriculum. However, magazines with preservation value among general liberal arts magazines may be preserved for more than three years. </li>
+	</ol>
+
+	<p> => We trust the users of library services, therefore, there is no control upon borrowing the book.</p>
+
+	<div class="alert-policy">
+		<strong>However, the punishment for stealing a book will be imposed and it will be severe; starting with lowering the borrowing up to 1 book only and up to the loss of library privileges. </strong>
+	</div>
+	
+</section>
+
+<style type="text/css">
+	section{
+		width: 60%;
+		margin: auto;
+	}
+	p{
+		font-size: 110%;
+	}
+	.alert-policy{
+		padding: 5px;
+		border: 3px dashed #D65656;
+		color: darkred;
+	}
+</style>
+
+{% endblock content %}

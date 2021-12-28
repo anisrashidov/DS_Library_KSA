@@ -1,0 +1,49 @@
+.personal-profile{
+	font-size: 90%;
+	width: 90%;
+	margin: 0 auto;
+}
+
+.extend-btn{
+	border: 0;
+	padding: 2px;
+	border-radius: 5px;
+	background-color: #c0eb34;
+}
+
+.col-md-8{
+	border-top: 1px solid rgba(159, 159, 159, .8);
+	padding-top: 20px;
+}
+
+
+@media (min-width: 576px) {
+	.extend-btn{
+		padding: 5px;
+	}
+	.profile-pic-field {
+		width: 70%;
+		margin: 0 auto;
+	}
+	.password-field{
+		width: 70%;
+		margin: 0 auto;
+	}
+	.update-btn{
+		margin-left: 80px;
+	}
+}
+
+@media (min-width: 900px) {
+	.profile-pic-field {
+		width:90%;
+		margin: 0 auto;
+	}
+	.password-field{
+		width: 90%;
+		margin: 0 auto;
+	}
+	.update-btn{
+		margin-left: 15px;
+	}
+}

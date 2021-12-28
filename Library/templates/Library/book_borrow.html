@@ -1,0 +1,19 @@
+{% extends 'Library/base.html' %}
+{% load static %}
+
+{% block link_css %}
+<link rel="stylesheet" type="text/css" href="{% static 'Library/book_borrow.css' %}">
+{% endblock link_css %}
+
+{% block content %}
+
+<div class="content">
+	<h4>Enter the book code below:</h4>
+	<form method="POST">
+		{% csrf_token %}
+		<input class="code-field" type="text" name="code_field" required>
+		<button class="submit-btn" type="submit">Borrow</button>
+	</form>
+</div>
+
+{% endblock content %}

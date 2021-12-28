@@ -1,0 +1,90 @@
+{% extends "Library/base.html" %}
+{% load crispy_forms_tags %}
+
+{% load static %}
+
+{% block link_css %}
+<link rel="stylesheet" type="text/css" href="{% static 'Users/profile.css' %}">
+{% endblock link_css %}
+
+{% block content %}
+
+<div class="personal-profile mt-5">
+    <div class="row">
+        <div class="col-md-4 pb-3">
+            <div class="text-center"><img class="img-fluid rounded" src="{{ request.user.profile.image.url }}"/></div>
+            <h3 class="text-center pt-2 pb-2">{{ request.user.student_ID }}</h3>
+            <h6 class="text-muted text-center">{{ request.user.email }}</h6>
+            {% if request.user.is_penalized %}
+                <div style="text-align: center;"><small style="color: red;">Your penalty expiration date is {{request.user.penalty_date}}</small></div>
+            {%endif%}
+            <nav>
+                <div class="nav nav-tabs" id="myTab" role="tablist">
+                    <button class="nav-link active" id="image-update-tab" data-bs-toggle="tab" data-bs-target="#image-update" type="button" role="tab" aria-controls="image-update" aria-selected="true">Image</button>
+                    <button class="nav-link" id="personal-info-tab" data-bs-toggle="tab" data-bs-target="#personal-info" type="button" role="tab" aria-controls="personal-info" aria-selected="false">Password</button>
+                </div>
+            </nav>
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="image-update" role="tabpanel" aria-labelledby="image-update-tab">
+                    <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <fieldset class="form-group profile-pic-field">
+                            <legend class="border-bottom mb-3 pb-1">Update your picture?</legend>
+                            {{ p_form|crispy }}
+                        </fieldset>
+                        <div class="form-group mt-3 update-btn">
+                            <button class="btn btn-outline-info" type="submit">Update</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="tab-pane fade" id="personal-info" role="tabpanel" aria-labelledby="personal-info-tab">
+                    <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <fieldset class="form-group password-field">
+                            <legend class="border-bottom mb-3 pb-1">Update your picture?</legend>
+                            {{ u_form|crispy }}
+                        </fieldset>
+                        <div class="form-group mt-3 update-btn">
+                            <button class="btn btn-outline-info" type="submit">Update</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <h3>Borrowed Books List:</h3>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Deadline</th>
+                        <th scope="col">Num. Of <br> Extensions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for book in borrowed_books %}
+                        <tr>
+                            <th scope="row"> {{forloop.counter}} </th>
+                            <td>{{book.book.book.title}}</td>
+                            {% if book.is_expired %}
+                                <td style="color: red">{{book.deadline}}</td>
+                            {% else %}
+                                <td>{{book.deadline}}</td>
+                            {%endif%}
+                            <td>{{book.num_of_extensions}}</td>
+                            <td>
+                                <form method="get">
+                                    {%csrf_token%}
+                                    <button class="extend-btn" type="submit" name="book_id" value="{{book.id}}">Extend</button>
+                                </form>
+                            </td>
+                        </tr>
+                    {%endfor%}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

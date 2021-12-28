@@ -1,0 +1,47 @@
+{% extends 'Library/base.html' %}
+{% load static %}
+
+{% block link_css %}
+<link rel="stylesheet" type="text/css" href="{% static 'Library/book.css' %}">
+{% endblock link_css %}
+
+{% block content %}
+
+{% if book %}
+
+	<div class="container shadow-lg p-2 mb-2 rounded">
+		<div class="image-and-text">
+			<img class="book_image" src="{{book.image.url}}">
+			<h1 class="book_title">{{book.title}}</h1>
+			<div class="book_authors">Written by {{book.authors}}</div>
+			<div class="book_count">The number of books left: <big>{{book_count}}</big></div>
+			<span>{{book.description}}</span>
+		</div>
+	</div>
+	<div class="container p-2 rounded" style="background-color: rgba(133, 133, 133, .4);">
+		<h3>Comments:</h3>
+			{% if request.user.is_authenticated %}
+			<form class="comment-form" method="POST">
+				{%csrf_token%}
+				<textarea class="form-control" name="comment-textarea"></textarea>
+				<button class="mb-0 mt-2 btn btn-success">Upload</button>
+			</form>
+		{% endif %}
+		<hr>
+		{% if not book.comments.all %}
+			No comments yet...
+		{% else %}
+			<ul>
+			{% for comment in book.comments.all %}
+				<li>
+					<strong>{{comment.student_ID}} :</strong>
+					<p class='comment-textfield'>{{comment.body}}</p>
+				</li>
+			{% endfor %}
+			</ul>
+		{% endif %}
+	</div>
+
+{% endif %}
+
+{% endblock content %}
